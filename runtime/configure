@@ -1,0 +1,11 @@
+# Keep track of which user is running this script
+me=$USER
+
+# Make every file in the folder r/w and owned by this user
+sudo chown $me *
+sudo chgrp $me *
+sudo chmod 664 *
+
+# Make the scripts executable
+chmod +x configure 
+

@@ -1,0 +1,42 @@
+{
+   "ActiveEmotionalView":"No Loops",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-587,-373",
+   "DisplayTieOff":"1",
+   "ExpandedHierarchyInLayout":"",
+   "No Loops_ExpandedHierarchyInLayout":"",
+   "No Loops_Layout":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port S_AXIS_TX -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace port M_AXIS_TX -pg 1 -lvl 3 -x 480 -y 100 -defaultsOSRD
+preplace port S_AXIS_RX -pg 1 -lvl 0 -x 0 -y 200 -defaultsOSRD
+preplace port M_AXIS_RX -pg 1 -lvl 3 -x 480 -y 360 -defaultsOSRD
+preplace port port-id_stream_clk -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace inst system_ila -pg 1 -lvl 2 -x 360 -y 160 -swap {0 1 2 3 4 5 6 7 8 9 10 11 12 14 13} -defaultsOSRD -pinDir SLOT_0_AXIS left -pinY SLOT_0_AXIS 0L -pinDir SLOT_1_AXIS left -pinY SLOT_1_AXIS 80L -pinDir clk left -pinY clk 140L -pinDir resetn left -pinY resetn 100L
+preplace inst tx_register_slice -pg 1 -lvl 1 -x 140 -y 60 -defaultsOSRD -pinDir S_AXIS left -pinY S_AXIS 0L -pinDir M_AXIS right -pinY M_AXIS 40R -pinDir aclk left -pinY aclk 20L -pinDir aresetn left -pinY aresetn 40L
+preplace inst rx_register_slice -pg 1 -lvl 1 -x 140 -y 200 -defaultsOSRD -pinDir S_AXIS left -pinY S_AXIS 0L -pinDir M_AXIS right -pinY M_AXIS 40R -pinDir aclk left -pinY aclk 20L -pinDir aresetn left -pinY aresetn 40L
+preplace netloc cmac_gt_rxusrclk2 1 0 2 20 300 NJ
+preplace netloc S_AXIS_TX_1 1 0 1 NJ 60
+preplace netloc axis_register_slice_0_M_AXIS 1 1 2 250 100 NJ
+preplace netloc S_AXIS_RX_1 1 0 1 NJ 200
+preplace netloc rx_register_slice_M_AXIS 1 1 2 250 360 NJ
+levelinfo -pg 1 0 140 360 480
+pagesize -pg 1 -db -bbox -sgen -130 0 610 380
+",
+   "No Loops_ScaleFactor":"1.0",
+   "No Loops_TopLeft":"-486,-152",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port SLOT_0_AXIS -pg 1 -lvl 0 -x -20 -y 50 -defaultsOSRD
+preplace port SLOT_1_AXIS -pg 1 -lvl 0 -x -20 -y 70 -defaultsOSRD
+preplace port port-id_stream_clk -pg 1 -lvl 0 -x -20 -y 90 -defaultsOSRD
+preplace inst system_ila -pg 1 -lvl 2 -x 350 -y 80 -defaultsOSRD
+preplace inst axis_register_slice_0 -pg 1 -lvl 1 -x 120 -y -60 -defaultsOSRD
+preplace netloc cmac_gt_rxusrclk2 1 0 2 NJ 90 N
+preplace netloc Conn1 1 0 2 NJ 50 N
+preplace netloc cmac_axis_rx 1 0 2 NJ 70 N
+levelinfo -pg 1 -20 120 350 460
+pagesize -pg 1 -db -bbox -sgen -170 -220 460 310
+"
+}
+

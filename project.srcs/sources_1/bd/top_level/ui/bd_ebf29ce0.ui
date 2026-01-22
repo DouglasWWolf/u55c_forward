@@ -1,0 +1,45 @@
+{
+   "ActiveEmotionalView":"No Loops",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-759,-287",
+   "DisplayTieOff":"1",
+   "ExpandedHierarchyInLayout":"",
+   "No Loops_ExpandedHierarchyInLayout":"",
+   "No Loops_Layout":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port S_AXIS -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace port M_AXIS -pg 1 -lvl 3 -x 500 -y 80 -defaultsOSRD
+preplace port port-id_stream_clk -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace port port-id_stream_resetn -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace port port-id_active -pg 1 -lvl 3 -x 500 -y 140 -defaultsOSRD
+preplace inst activity_mon -pg 1 -lvl 2 -x 370 -y 140 -defaultsOSRD -pinDir stream left -pinY stream 0L -pinDir clk left -pinY clk 20L -pinDir resetn left -pinY resetn 40L -pinDir active right -pinY active 0R
+preplace inst axis_register_slice -pg 1 -lvl 1 -x 150 -y 60 -defaultsOSRD -pinDir S_AXIS left -pinY S_AXIS 0L -pinDir M_AXIS right -pinY M_AXIS 20R -pinDir aclk left -pinY aclk 20L -pinDir aresetn left -pinY aresetn 40L
+preplace netloc cmac_gt_rxusrclk2 1 0 2 40 160 NJ
+preplace netloc cmac_control_ex_rx_resetn_out 1 0 2 20 180 NJ
+preplace netloc activity_mon_0_active 1 2 1 NJ 140
+preplace netloc ila_M_AXIS_RX 1 0 1 NJ 60
+preplace netloc axis_register_slice_0_M_AXIS 1 1 2 260 80 NJ
+levelinfo -pg 1 0 150 370 500
+pagesize -pg 1 -db -bbox -sgen -160 0 610 240
+",
+   "No Loops_ScaleFactor":"1.0",
+   "No Loops_TopLeft":"-656,-314",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port S_AXIS -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
+preplace port M_AXIS -pg 1 -lvl 2 -x 280 -y 70 -defaultsOSRD
+preplace port port-id_stream_clk -pg 1 -lvl 0 -x 0 -y 70 -defaultsOSRD
+preplace port port-id_stream_resetn -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
+preplace port port-id_active -pg 1 -lvl 2 -x 280 -y 210 -defaultsOSRD
+preplace inst activity_mon -pg 1 -lvl 1 -x 150 -y 210 -defaultsOSRD
+preplace inst axis_register_slice -pg 1 -lvl 1 -x 150 -y 70 -defaultsOSRD
+preplace netloc cmac_gt_rxusrclk2 1 0 1 30 70n
+preplace netloc cmac_control_ex_rx_resetn_out 1 0 1 20 90n
+preplace netloc activity_mon_0_active 1 1 1 NJ 210
+preplace netloc ila_M_AXIS_RX 1 0 1 40 50n
+preplace netloc axis_register_slice_0_M_AXIS 1 1 1 NJ 70
+levelinfo -pg 1 0 150 280
+pagesize -pg 1 -db -bbox -sgen -150 0 380 280
+"
+}
+
