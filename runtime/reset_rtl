@@ -1,13 +1,12 @@
 #
-#  These can vary per physical installation!
+#  This script depends on variables $BDF0 and $BDF1 that
+#  define the PCI BDF numbers of the two FPGA cards
 #
 
-bdf0=18:00.0
-bdf1=8a:00.0
 
 # Fetch the RTL-ID from both FPGAs
-version0=$(pcireg -bdf $bdf0 0x14)
-version1=$(pcireg -bdf $bdf1 0x14)
+version0=$(pcireg -bdf $BDF0 -dec 0x14)
+version1=$(pcireg -bdf $BDF1 -dec 0x14)
 
 # Ensure that the RTL in FPGA#0 is what we're expecting
 if [ $version0 -ne 12126 ]; then
@@ -22,8 +21,9 @@ if [ $version1 -ne 12126 ]; then
 fi
 
 # Issue a "reset" command to the RTL in both FPGAs
-pcireg -bdf $bdf0 0x1048 1
-pcireg -bdf $bdf1 0x1048 1
+pcireg -bdf $BDF0 0x1048 1
+pcireg -bdf $BDF1 0x1048 1
 
 # Sleep very briefly to allow the reset to complete
-sleep .001
+sleep .01
+

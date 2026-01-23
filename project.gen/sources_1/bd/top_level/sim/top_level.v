@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-//Date        : Thu Jan 22 13:57:10 2026
+//Date        : Fri Jan 23 12:28:16 2026
 //Host        : wolf-super-server running 64-bit Ubuntu 20.04.6 LTS
 //Command     : generate_target top_level.bd
 //Design      : top_level
@@ -31,6 +31,7 @@ module eth_0_imp_H4LLQV
     qsfp_gt_grx_p,
     qsfp_gt_gtx_n,
     qsfp_gt_gtx_p,
+    reset_indicator,
     rsfec_enable,
     stream_clk,
     stream_resetn,
@@ -58,6 +59,7 @@ module eth_0_imp_H4LLQV
   input [3:0]qsfp_gt_grx_p;
   output [3:0]qsfp_gt_gtx_n;
   output [3:0]qsfp_gt_gtx_p;
+  output reset_indicator;
   input rsfec_enable;
   output stream_clk;
   output stream_resetn;
@@ -104,6 +106,7 @@ module eth_0_imp_H4LLQV
   wire [3:0]qsfp_gt_grx_p;
   wire [3:0]qsfp_gt_gtx_n;
   wire [3:0]qsfp_gt_gtx_p;
+  wire reset_indicator;
   wire rsfec_enable;
   wire stream_clk;
   wire stream_resetn;
@@ -221,6 +224,10 @@ module eth_0_imp_H4LLQV
         .tx_diff(tx_diff),
         .tx_post(tx_post),
         .tx_pre(tx_pre));
+  top_level_reset_indicator_0_0 reset_indicator_RnM
+       (.clk(stream_clk),
+        .reset_indicator(reset_indicator),
+        .resetn(stream_resetn));
   rx_path_imp_1385L5B rx_path
        (.M_AXIS_tdata(axis_rx_tdata),
         .M_AXIS_tkeep(axis_rx_tkeep),
@@ -258,6 +265,7 @@ module eth_1_imp_1MEC6LL
     qsfp_gt_grx_p,
     qsfp_gt_gtx_n,
     qsfp_gt_gtx_p,
+    reset_indicator,
     rsfec_enable,
     stream_clk,
     stream_resetn,
@@ -285,6 +293,7 @@ module eth_1_imp_1MEC6LL
   input [3:0]qsfp_gt_grx_p;
   output [3:0]qsfp_gt_gtx_n;
   output [3:0]qsfp_gt_gtx_p;
+  output reset_indicator;
   input rsfec_enable;
   output stream_clk;
   output stream_resetn;
@@ -331,6 +340,7 @@ module eth_1_imp_1MEC6LL
   wire [3:0]qsfp_gt_grx_p;
   wire [3:0]qsfp_gt_gtx_n;
   wire [3:0]qsfp_gt_gtx_p;
+  wire reset_indicator;
   wire rsfec_enable;
   wire stream_clk;
   wire stream_resetn;
@@ -448,6 +458,10 @@ module eth_1_imp_1MEC6LL
         .tx_diff(tx_diff),
         .tx_post(tx_post),
         .tx_pre(tx_pre));
+  top_level_reset_indicator_0_1 reset_indicator_RnM
+       (.clk(stream_clk),
+        .reset_indicator(reset_indicator),
+        .resetn(stream_resetn));
   rx_path_imp_R7EV8U rx_path
        (.M_AXIS_tdata(axis_rx_tdata),
         .M_AXIS_tkeep(axis_rx_tkeep),
@@ -1353,7 +1367,7 @@ module sys_control_imp_1QFV668
         .resetn_1_out(resetn_1_out));
 endmodule
 
-(* CORE_GENERATION_INFO = "top_level,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top_level,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=31,numReposBlks=22,numNonXlnxBlks=0,numHierBlks=9,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,\"\"\"\"\"\"\"\"\"\"\"\"da_axi4_cnt\"\"\"\"\"\"\"\"\"\"\"\"=4,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "top_level.hwdef" *) 
+(* CORE_GENERATION_INFO = "top_level,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top_level,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=33,numReposBlks=24,numNonXlnxBlks=0,numHierBlks=9,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=9,numPkgbdBlks=0,bdsource=USER,\"\"\"\"\"\"\"\"\"\"\"\"\"\"da_axi4_cnt\"\"\"\"\"\"\"\"\"\"\"\"\"\"=4,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "top_level.hwdef" *) 
 module top_level
    (hbm_cattrip,
     pcie0_refclk_clk_n,
@@ -1410,6 +1424,7 @@ module top_level
   wire eth_0_axis_rx_TLAST;
   wire [0:0]eth_0_axis_rx_TUSER;
   wire eth_0_axis_rx_TVALID;
+  wire eth_0_reset_indicator;
   wire eth_0_stat_rx_aligned_0;
   wire eth_0_stream_clk;
   wire eth_0_stream_resetn;
@@ -1419,6 +1434,7 @@ module top_level
   wire eth_1_axis_rx_TLAST;
   wire [0:0]eth_1_axis_rx_TUSER;
   wire eth_1_axis_rx_TVALID;
+  wire eth_1_reset_indicator;
   wire eth_1_stat_rx_aligned_0;
   wire eth_1_stream_clk;
   wire eth_1_stream_resetn;
@@ -1596,6 +1612,7 @@ module top_level
         .qsfp_gt_grx_p(qsfp0_gt_grx_p),
         .qsfp_gt_gtx_n(qsfp0_gt_gtx_n),
         .qsfp_gt_gtx_p(qsfp0_gt_gtx_p),
+        .reset_indicator(eth_0_reset_indicator),
         .rsfec_enable(cabletest_RSFEC_ENABLE),
         .stream_clk(eth_0_stream_clk),
         .stream_resetn(eth_0_stream_resetn),
@@ -1624,6 +1641,7 @@ module top_level
         .qsfp_gt_grx_p(qsfp1_gt_grx_p),
         .qsfp_gt_gtx_n(qsfp1_gt_gtx_n),
         .qsfp_gt_gtx_p(qsfp1_gt_gtx_p),
+        .reset_indicator(eth_1_reset_indicator),
         .rsfec_enable(cabletest_RSFEC_ENABLE),
         .stream_clk(eth_1_stream_clk),
         .stream_resetn(eth_1_stream_resetn),
@@ -1844,7 +1862,9 @@ module top_level
        (.qsfp0_led(qsfp0_led),
         .qsfp0_up(eth_0_stat_rx_aligned_0),
         .qsfp1_led(qsfp1_led),
-        .qsfp1_up(eth_1_stat_rx_aligned_0));
+        .qsfp1_up(eth_1_stat_rx_aligned_0),
+        .reset_ind0(eth_0_reset_indicator),
+        .reset_ind1(eth_1_reset_indicator));
   sys_control_imp_1QFV668 sys_control
        (.CMAC_TXDIFF(cabletest_CMAC_TXDIFF),
         .CMAC_TXPOST(cabletest_CMAC_TXPOST),

@@ -22,7 +22,8 @@
         "rx_path": {
           "activity_mon": "",
           "axis_register_slice": ""
-        }
+        },
+        "reset_indicator": ""
       },
       "eth_1": {
         "cmac": "",
@@ -30,7 +31,8 @@
         "rx_path": {
           "activity_mon": "",
           "axis_register_slice": ""
-        }
+        },
+        "reset_indicator": ""
       },
       "sys_control": {
         "cabletest_ctl": ""
@@ -564,6 +566,9 @@
           },
           "active": {
             "direction": "O"
+          },
+          "reset_indicator": {
+            "direction": "O"
           }
         },
         "components": {
@@ -984,6 +989,52 @@
                 ]
               }
             }
+          },
+          "reset_indicator": {
+            "vlnv": "xilinx.com:module_ref:reset_indicator:1.0",
+            "ip_revision": "1",
+            "xci_name": "top_level_reset_indicator_0_0",
+            "xci_path": "ip/top_level_reset_indicator_0_0/top_level_reset_indicator_0_0.xci",
+            "inst_hier_path": "eth_0/reset_indicator",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "reset_indicator",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_RESET": {
+                    "value": "resetn",
+                    "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "322265625",
+                    "value_src": "const_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "top_level_cmac_usplus_0_0_gt_txusrclk2",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "resetn": {
+                "type": "rst",
+                "direction": "I",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_LOW",
+                    "value_src": "constant"
+                  }
+                }
+              },
+              "reset_indicator": {
+                "type": "rst",
+                "direction": "O"
+              }
+            }
           }
         },
         "interface_nets": {
@@ -1073,7 +1124,8 @@
             "ports": [
               "cmac_control_ex/rx_resetn_out",
               "stream_resetn",
-              "rx_path/stream_resetn"
+              "rx_path/stream_resetn",
+              "reset_indicator/resetn"
             ]
           },
           "cmac_control_ex_sync_rx_aligned": {
@@ -1094,7 +1146,14 @@
               "stream_clk",
               "rx_path/stream_clk",
               "cmac/rx_clk",
-              "cmac_control_ex/rx_clk"
+              "cmac_control_ex/rx_clk",
+              "reset_indicator/clk"
+            ]
+          },
+          "reset_indicator_reset_indicator": {
+            "ports": [
+              "reset_indicator/reset_indicator",
+              "reset_indicator"
             ]
           },
           "rsfec_enable_1": {
@@ -1190,6 +1249,9 @@
             "right": "0"
           },
           "active": {
+            "direction": "O"
+          },
+          "reset_indicator": {
             "direction": "O"
           }
         },
@@ -1611,6 +1673,52 @@
                 ]
               }
             }
+          },
+          "reset_indicator": {
+            "vlnv": "xilinx.com:module_ref:reset_indicator:1.0",
+            "ip_revision": "1",
+            "xci_name": "top_level_reset_indicator_0_1",
+            "xci_path": "ip/top_level_reset_indicator_0_1/top_level_reset_indicator_0_1.xci",
+            "inst_hier_path": "eth_1/reset_indicator",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "reset_indicator",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_RESET": {
+                    "value": "resetn",
+                    "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "322265625",
+                    "value_src": "const_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "top_level_cmac_0_gt_txusrclk2",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "resetn": {
+                "type": "rst",
+                "direction": "I",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_LOW",
+                    "value_src": "constant"
+                  }
+                }
+              },
+              "reset_indicator": {
+                "type": "rst",
+                "direction": "O"
+              }
+            }
           }
         },
         "interface_nets": {
@@ -1686,7 +1794,8 @@
             "ports": [
               "cmac_control_ex/rx_resetn_out",
               "stream_resetn",
-              "rx_path/stream_resetn"
+              "rx_path/stream_resetn",
+              "reset_indicator/resetn"
             ]
           },
           "cmac_control_ex_0_sync_rx_aligned": {
@@ -1707,7 +1816,8 @@
               "stream_clk",
               "rx_path/stream_clk",
               "cmac/rx_clk",
-              "cmac_control_ex/rx_clk"
+              "cmac_control_ex/rx_clk",
+              "reset_indicator/clk"
             ]
           },
           "init_clk_divider_init_clk": {
@@ -1716,6 +1826,12 @@
               "cmac/gt_drpclk",
               "cmac/init_clk",
               "cmac/drp_clk"
+            ]
+          },
+          "reset_indicator_0_reset_indicator": {
+            "ports": [
+              "reset_indicator/reset_indicator",
+              "reset_indicator"
             ]
           },
           "rsfec_enable_1": {
@@ -2367,6 +2483,14 @@
             "direction": "I"
           },
           "qsfp1_up": {
+            "direction": "I"
+          },
+          "reset_ind0": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "reset_ind1": {
+            "type": "rst",
             "direction": "I"
           },
           "qsfp0_led": {
@@ -3184,6 +3308,12 @@
           "sys_control/active0_async"
         ]
       },
+      "eth_0_reset_indicator": {
+        "ports": [
+          "eth_0/reset_indicator",
+          "status_leds/reset_ind0"
+        ]
+      },
       "eth_0_stat_rx_aligned_0": {
         "ports": [
           "eth_0/aligned",
@@ -3207,6 +3337,12 @@
         "ports": [
           "eth_1/active",
           "sys_control/active1_async"
+        ]
+      },
+      "eth_1_reset_indicator": {
+        "ports": [
+          "eth_1/reset_indicator",
+          "status_leds/reset_ind1"
         ]
       },
       "eth_1_stat_rx_aligned_0": {

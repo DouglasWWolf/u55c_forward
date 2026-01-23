@@ -1,3 +1,5 @@
+rm -rf tmp
+
 export project=project
 export folder=.
 
