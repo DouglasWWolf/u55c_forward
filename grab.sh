@@ -1,5 +1,5 @@
 dest=bitstream
-base=u55c_forward
+base=u55c_packet_relay
 
 mkdir $dest 2>/dev/null
 
